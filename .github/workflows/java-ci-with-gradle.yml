@@ -9,7 +9,7 @@ jobs:
   run_tests:
 
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.11
@@ -17,10 +17,13 @@ jobs:
       with:
         java-version: 1.11
     - name: Grant execute permission for gradlew
-      run: chmod +x viikko1/NhlStatistics1/gradlew
+      run: chmod +x gradlew
+      working-directory: NhlStatistics1
     - name: Test with Gradle
-      run: viikko1/NhlStatistics1/.gradlew test
+      run: ./gradlew test
+      working-directory: NhlStatistics1
     - name: Code coverage rapost
-      run: viikko1/NhlStatistics1/.gradlew jacocoTestReport
+      run: ./gradlew jacocoTestReport
+      working-directory: NhlStatistics1
     - name: Data to codecov
       run: bash <(curl -s https://codecov.io/bash)
