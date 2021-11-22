@@ -1,0 +1,49 @@
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'build-dashboard'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+task( browse, dependsOn: jar, type: JavaExec ) {
+    main = 'ohtu.Tester'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+project.ext {
+    cucumberVersion = '6.8.1'
+    junitVersion = '4.13'    
+    seleniumVersion = '3.14.0'
+    fluentleniumVersion = '4.3.0'
+    sparkVersion = '2.7.1'
+}
+
+dependencies {
+    testImplementation 'io.cucumber:cucumber-java:' + cucumberVersion
+    testImplementation 'io.cucumber:cucumber-junit:' + cucumberVersion
+    testImplementation 'junit:junit:' + junitVersion
+    implementation group: 'com.sparkjava', name: 'spark-core', version: sparkVersion
+    implementation group: 'com.sparkjava', name: 'spark-template-velocity', version: sparkVersion
+    testImplementation group: 'org.fluentlenium', name: 'fluentlenium-core', version: fluentleniumVersion
+    testImplementation group: 'org.fluentlenium', name: 'fluentlenium-assertj', version: fluentleniumVersion
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version:seleniumVersion
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version:seleniumVersion
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-api', version:seleniumVersion
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version:seleniumVersion
+    implementation group: 'org.seleniumhq.selenium', name: 'htmlunit-driver', version: '2.33.0'
+}
+
+test {
+    testLogging.showStandardStreams = true
+    systemProperties System.getProperties()
+}
+
+application {
+    mainClass = 'ohtu.Main'
+}
+
