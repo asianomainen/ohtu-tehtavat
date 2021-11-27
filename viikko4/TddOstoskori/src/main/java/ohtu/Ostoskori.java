@@ -53,6 +53,8 @@ public class Ostoskori {
     }
 
     public void tyhjenna() {
-        // tyhjentää korin
+        ostoskori = new ArrayList<>();
+        yhteishinta = 0;
+        tavaramaara = 0;
     }
 }
