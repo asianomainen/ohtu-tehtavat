@@ -177,7 +177,7 @@ public class OstoskoriTest {
         assertEquals(0, kori.tavaroitaKorissa());
     }
 
-    // step 14
+    // step 15
     @Test
     public void tyhjennaTyhjentaaKorin() {
         Tuote maito = new Tuote("maito", 3);
