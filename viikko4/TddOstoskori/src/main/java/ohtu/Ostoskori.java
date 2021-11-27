@@ -39,6 +39,7 @@ public class Ostoskori {
     public void poista(Tuote poistettava) {
         for (Ostos ostos : ostoskori) {
             if (ostos.tuotteenNimi().equals(poistettava.getNimi())) {
+                ostoskori.remove(ostos);
                 ostos.muutaLukumaaraa(-1);
                 yhteishinta -= poistettava.getHinta();
                 tavaramaara--;
