@@ -67,7 +67,7 @@ public class OstoskoriTest {
 
     // step 6
     @Test
-    public void kahdenSamanTuotteenLisaamisenJalkeenOstoskorinHintaOnSamaKuinTuotteidenSumma() {
+    public void kahdenSamanTuotteenLisaamisenJalkeenOstoskorinTavaramaaraOnOikein() {
         Tuote maito = new Tuote("maito", 3);
 
         kori.lisaaTuote(maito);
