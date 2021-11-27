@@ -6,14 +6,16 @@ import java.util.List;
 public class Ostoskori {
     List<Ostos> ostoskori;
     int yhteishinta;
+    int tavaramaara;
 
     public Ostoskori() {
         this.ostoskori = new ArrayList<>();
         this.yhteishinta = 0;
+        this.tavaramaara = 0;
     }
 
     public int tavaroitaKorissa() {
-        return ostoskori.size();
+        return this.tavaramaara;
     }
 
     public int hinta() {
@@ -21,8 +23,17 @@ public class Ostoskori {
     }
 
     public void lisaaTuote(Tuote lisattava) {
+        for (Ostos ostos : ostoskori) {
+            if (ostos.tuotteenNimi().equals(lisattava.getNimi())) {
+                ostos.muutaLukumaaraa(1);
+                yhteishinta += lisattava.getHinta();
+                tavaramaara++;
+                return;
+            }
+        }
         ostoskori.add(new Ostos(lisattava));
         yhteishinta += lisattava.getHinta();
+        tavaramaara++;
     }
 
     public void poista(Tuote poistettava) {
